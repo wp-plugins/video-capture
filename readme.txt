@@ -50,7 +50,7 @@ Simply login into your admin area of your WordPress site. Click on the link, in 
 
 == Installation ==
 
-Activate the plugin through the 'Plugins' menu in WordPress
+Activate the plugin through the 'Plugins' menu in WordPress.
 
 == Frequently Asked Questions ==
 
@@ -71,7 +71,7 @@ have to worry about your local storage size and you never run out of space!
 At the moment, there is no way to *capture* video using HTML5, so we're using
 Adobe Flash to capture input from your camera and microphone.
 
-The plugin *doesn't* use Adobe Flash on mobile devices, though.
+The plugin *doesn't* use Adobe Flash on mobile devices.
 
 == Screenshots ==
 
