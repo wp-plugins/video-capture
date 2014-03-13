@@ -12,8 +12,6 @@ A video camera on your website!
 
 == Description ==
 
-The plugin is FREE for non-commercial use. For a commercial license, please [contact us](http://vidrack.com/contact/).
-
 * [Vidrack's Video Capture](http://vidrack.com) is a 'record video' button you can place anywhere on your website.
 * It's just a button that activates your website visitors webcam or mobile camera.
 * You can customize text around the button asking for specific types of videos.
@@ -23,6 +21,7 @@ The plugin is FREE for non-commercial use. For a commercial license, please [con
 * You choose which videos to share, download or delete from the admin panel.
 
 For more information, check out [User Guide](http://vidrack.com/guide/).
+The plugin is FREE for non-commercial use. For a commercial license, please [contact us](http://vidrack.com/contact/).
 
 = How to use =
 
