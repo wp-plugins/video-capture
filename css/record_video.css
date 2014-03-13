@@ -1,0 +1,70 @@
+.wp-video-capture-flash-container,
+.wp-video-capture-desktop {
+  display: none;
+}
+
+.wp-video-capture-progress-container {
+  display: none;
+  padding: 20px 0 20px 0;
+}
+
+.wp-video-capture-progress-container p {
+  margin: 0;
+}
+
+.wp-video-capture-progress {
+  border: 1px solid black;
+  width: 200px;
+}
+
+.wp-video-capture-file-selector {
+  display: none;
+}
+
+.wp-video-capture-terms-and-conditions {
+  display: none;
+  margin-top: 20px;
+}
+
+.wp-video-capture-tnc-link {
+  font-size: 20px;
+  text-decoration: none;
+  margin-left: 5px;
+}
+
+.icheckbox_flat-green {
+  margin-bottom: 3px;
+}
+
+.wp-video-capture-upload-button {
+  display: none;
+}
+
+.wp-video-capture-upload-button img {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.wp-video-capture-ajax-success-store,
+.wp-video-capture-ajax-success-upload,
+.wp-video-capture-ajax-error-store,
+.wp-video-capture-ajax-error-upload {
+  display: none;
+  color: #000;
+  font-weight: bold;
+  margin-bottom: 10px;
+  padding-left: 10px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.wp-video-capture-ajax-success-store,
+.wp-video-capture-ajax-success-upload {
+  background-color: #CEF6CE;
+}
+
+.wp-video-capture-ajax-error-store,
+.wp-video-capture-ajax-error-upload {
+  background-color: #F6D8CE;
+}
