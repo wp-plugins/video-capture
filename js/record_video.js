@@ -7,7 +7,7 @@ jQuery(function() {
   }
 
   // Desktop "Record" button
-  jQuery('.wp-video-capture-record-button-desktop').on('click', function() {
+  jQuery('.wp-video-capture-record-button-desktop').on('click', function(e) {
 
     // Show SWF container
     jQuery(this).closest('div').find('.wp-video-capture-flash-container').show();
@@ -33,6 +33,9 @@ jQuery(function() {
 
     // Hide the button
     jQuery(this).hide();
+
+    e.stopPropagation();
+    return false;
   });
  
   // Initialize checkbox
@@ -41,12 +44,15 @@ jQuery(function() {
   });
   
   // Mobile "Record" button
-  jQuery('.wp-video-capture-record-button-mobile').on('click', function() {
+  jQuery('.wp-video-capture-record-button-mobile').on('click', function(e) {
     var d = jQuery(this).closest('div');
 
     d.find('.wp-video-capture-upload-button').show()
     d.find('.wp-video-capture-terms-and-conditions').show();
   	d.find('.wp-video-capture-file-selector').trigger('click'); 
+
+    e.stopPropagation();
+    return false;
   });
 
   // Bind to upload button click
