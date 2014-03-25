@@ -7,7 +7,7 @@ jQuery(function() {
   }
 
   // Desktop "Record" button
-  jQuery('.wp-video-capture-record-button-desktop').on('click', function(e) {
+  jQuery('.wp-video-capture-record-button-desktop').click(function(e) {
 
     // Show SWF container
     jQuery(this).closest('div').find('.wp-video-capture-flash-container').show();
@@ -44,19 +44,19 @@ jQuery(function() {
   });
   
   // Mobile "Record" button
-  jQuery('.wp-video-capture-record-button-mobile').on('click', function(e) {
+  jQuery('.wp-video-capture-record-button-mobile').click(function(e) {
     var d = jQuery(this).closest('div');
 
     d.find('.wp-video-capture-upload-button').show()
     d.find('.wp-video-capture-terms-and-conditions').show();
-  	d.find('.wp-video-capture-file-selector').trigger('click'); 
+  	d.find('.wp-video-capture-file-selector').click(); 
 
     e.stopPropagation();
     return false;
   });
 
   // Bind to upload button click
-  jQuery('.wp-video-capture-upload-button').on('click', function(event) {
+  jQuery('.wp-video-capture-upload-button').click(function(event) {
   
     var d = jQuery(this).closest('div');
     if (!d.find('.wp-video-capture-tnc-checkbox').attr('checked')) {
@@ -167,7 +167,7 @@ jQuery(function() {
   });
 
   // Show popup with Terms and Conditions
-  jQuery('.wp-video-capture-tnc-link').on('click', function() {
+  jQuery('.wp-video-capture-tnc-link').click(function() {
     window.open(
       'http://vidrack.com/terms-conditions/',
       'wp-video-capture-terms-and-conditions',

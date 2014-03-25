@@ -1,14 +1,14 @@
 === Video Capture ===
 Contributors: vincent-stark
 Donate link: http://vidrack.com/examples
-Tags: video, camera, media, capture, plugin
+Tags: webcam, video, camera, media, capture, plugin
 Requires at least: 3.4
 Tested up to: 3.8.1
-Stable tag: 1.3
+Stable tag: 1.3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-A video camera on your website!
+Webcam recording by Vidrack.
 
 == Description ==
 
@@ -81,6 +81,9 @@ The plugin *doesn't* use Adobe Flash on mobile devices.
 
 == Changelog ==
 
+= 1.3.1 =
+* Stability & compatibility improvements.
+
 = 1.3 =
 * Fully reworked code for better stability & performance.
 
@@ -92,6 +95,9 @@ The plugin *doesn't* use Adobe Flash on mobile devices.
 * First official release. Got everyone excited!
 
 == Upgrade Notice ==
+
+= 1.3.1 =
+Multiple fixes & improvements. Upgrade is recommended.
 
 = 1.3 =
 Completely revamped version. Upgrade is highly recommended for better

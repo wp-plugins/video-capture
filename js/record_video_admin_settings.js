@@ -1,7 +1,7 @@
 jQuery(function() {
 
   // Show popup with Terms and Conditions
-  jQuery('.wp-video-capture-tnc-link').on('click', function() {
+  jQuery('.wp-video-capture-tnc-link').click(function() {
     window.open(
       'http://vidrack.com/terms-conditions/',
       'wp-video-capture-terms-and-conditions',

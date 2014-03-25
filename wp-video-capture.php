@@ -3,7 +3,7 @@
 Plugin Name: Video Capture
 Plugin URI: http://vidrack.com/demo
 Description: Add a video camera to your website!
-Version: 1.3
+Version: 1.3.1
 Author: Vidrack.com
 Author URI: http://vidrack.com
 License: Vidrack Proprietary License
