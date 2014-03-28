@@ -1,10 +1,4 @@
-.wp-video-capture-flash-container,
-.wp-video-capture-desktop {
-  display: none !important;
-}
-
 .wp-video-capture-progress-container {
-  display: none !important;
   padding: 20px 0 20px 0;
 }
 
@@ -17,12 +11,7 @@
   width: 200px;
 }
 
-.wp-video-capture-file-selector {
-  display: none !important;
-}
-
 .wp-video-capture-terms-and-conditions {
-  display: none !important;
   margin-top: 20px;
 }
 
@@ -36,10 +25,6 @@
   margin-bottom: 3px;
 }
 
-.wp-video-capture-upload-button {
-  display: none !important;
-}
-
 .wp-video-capture-upload-button img {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -49,7 +34,6 @@
 .wp-video-capture-ajax-success-upload,
 .wp-video-capture-ajax-error-store,
 .wp-video-capture-ajax-error-upload {
-  display: none !important;
   color: #000;
   font-weight: bold;
   margin-bottom: 10px;

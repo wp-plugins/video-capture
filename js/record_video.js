@@ -47,7 +47,7 @@ jQuery(function() {
   jQuery('.wp-video-capture-record-button-mobile').click(function(e) {
     var d = jQuery(this).closest('div');
 
-    d.find('.wp-video-capture-upload-button').show()
+    d.find('.wp-video-capture-upload-button').show();
     d.find('.wp-video-capture-terms-and-conditions').show();
   	d.find('.wp-video-capture-file-selector').click(); 
 

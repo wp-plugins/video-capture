@@ -4,7 +4,7 @@ Donate link: http://vidrack.com/examples
 Tags: webcam, recorder, video, camera, media, capture, plugin
 Requires at least: 3.4
 Tested up to: 3.8.1
-Stable tag: 1.3.1
+Stable tag: 1.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -81,6 +81,9 @@ The plugin *doesn't* use Adobe Flash on mobile devices.
 
 == Changelog ==
 
+= 1.3.2 =
+* Fixed bug that caused Record button be not visible sometimes.
+
 = 1.3.1 =
 * Stability & compatibility improvements.
 
@@ -95,6 +98,9 @@ The plugin *doesn't* use Adobe Flash on mobile devices.
 * First official release. Got everyone excited!
 
 == Upgrade Notice ==
+
+= 1.3.2 =
+Minor layout fixes. Upgrade is recommended.
 
 = 1.3.1 =
 Multiple fixes & improvements. Upgrade is recommended.
