@@ -1,7 +1,7 @@
 === Video Capture ===
 Contributors: vincent-stark
 Donate link: http://vidrack.com/examples
-Tags: webcam, recorder, video, camera, media, capture, plugin
+Tags: webcam, recorder, video, camera, media, capture, plugin, posts, comments
 Requires at least: 3.4
 Tested up to: 3.8.1
 Stable tag: 1.3.2
