@@ -1,14 +1,14 @@
 === Video Capture ===
 Contributors: vincent-stark
 Donate link: http://vidrack.com/examples
-Tags: webcam, recorder, video, camera, media, capture, plugin, posts, comments
+Tags: page, sidebar, widget, post, admin, shortcode, user generated video, video content, video marketing, video reviews, video testimonials, video submission, video upload, YouTube, Vimeo
 Requires at least: 3.4
-Tested up to: 3.8.1
+Tested up to: 3.9
 Stable tag: 1.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Webcam recording by Vidrack.
+A Video Camera on Your Website. Webcam Recorder by Vidrack. Easily gather user generated video content from your website visitors.
 
 == Description ==
 
