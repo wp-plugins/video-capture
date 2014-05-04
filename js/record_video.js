@@ -34,8 +34,8 @@ jQuery(function() {
     // Hide the button
     jQuery(this).hide();
 
+    e.preventDefault();
     e.stopPropagation();
-    return false;
   });
  
   // Initialize checkbox
@@ -44,15 +44,15 @@ jQuery(function() {
   });
   
   // Mobile "Record" button
-  jQuery('.wp-video-capture-record-button-mobile').click(function(e) {
+  jQuery('.wp-video-capture-record-button-mobile').click(function(event) {
     var d = jQuery(this).closest('div');
 
+  	d.find('.wp-video-capture-file-selector').click(); 
     d.find('.wp-video-capture-upload-button').show();
     d.find('.wp-video-capture-terms-and-conditions').show();
-  	d.find('.wp-video-capture-file-selector').click(); 
 
-    e.stopPropagation();
-    return false;
+    event.preventDefault();
+    event.stopPropagation();
   });
 
   // Bind to upload button click
@@ -61,6 +61,8 @@ jQuery(function() {
     var d = jQuery(this).closest('div');
     if (!d.find('.wp-video-capture-tnc-checkbox').attr('checked')) {
       alert('Please agree to the Terms and Conditions by checking the box');
+      event.preventDefault();
+      event.stopPropagation();
       return false;
     }
 
@@ -163,7 +165,7 @@ jQuery(function() {
     });
 
     event.preventDefault();
-
+    event.stopPropagation();
   });
 
   // Show popup with Terms and Conditions

@@ -4,7 +4,7 @@ Donate link: http://vidrack.com/examples
 Tags: page, sidebar, widget, post, admin, shortcode, user generated video, video content, video marketing, video reviews, video testimonials, video submission, video upload, YouTube, Vimeo
 Requires at least: 3.4
 Tested up to: 3.9
-Stable tag: 1.3.2
+Stable tag: 1.3.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -81,6 +81,9 @@ The plugin *doesn't* use Adobe Flash on mobile devices.
 
 == Changelog ==
 
+= 1.3.3 =
+* Minor fixes & improvements.
+
 = 1.3.2 =
 * Fixed bug that caused Record button be not visible sometimes.
 
@@ -98,6 +101,9 @@ The plugin *doesn't* use Adobe Flash on mobile devices.
 * First official release. Got everyone excited!
 
 == Upgrade Notice ==
+
+= 1.3.3 =
+Minor fixes. Upgrade is recommended.
 
 = 1.3.2 =
 Minor layout fixes. Upgrade is recommended.

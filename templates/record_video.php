@@ -12,7 +12,7 @@
         <progress class="wp-video-capture-progress" value="0" max="100"></progress>
       </div>
       <a href="#" class="wp-video-capture-record-button-mobile"><img src="<?php echo plugin_dir_url(__FILE__) ?>../images/button_record.jpg"></a>
-      <input class="wp-video-capture-file-selector" type="file" accept="video/*" capture="camera" style="display: none;" />
+      <input class="wp-video-capture-file-selector" type="file" accept="video/*;capture=camera" capture="camera" style="display: none;" />
   
       <div class="wp-video-capture-terms-and-conditions" style="display: none;">
         <label>
