@@ -1,7 +1,7 @@
 === Video Capture ===
 Contributors: vincent-stark
 Donate link: http://vidrack.com/examples
-Tags: page, sidebar, widget, post, admin, shortcode, user generated video, video content, video marketing, video reviews, video testimonials, video submission, video upload, YouTube, Vimeo
+Tags: camera, capture, comments, media, plugin, posts, recorder, video, webcam, page, sidebar, widget, post, admin, shortcode, user generated video, video content, video marketing, video reviews, video testimonials, video submission, video upload, YouTube, Vimeo
 Requires at least: 3.4
 Tested up to: 3.9
 Stable tag: 1.3.3
