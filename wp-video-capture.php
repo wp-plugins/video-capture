@@ -3,7 +3,7 @@
 Plugin Name: Video Capture
 Plugin URI: http://vidrack.com/demo
 Description: Add a video camera to your website!
-Version: 1.3.3
+Version: 1.4
 Author: Vidrack.com
 Author URI: http://vidrack.com
 License: Vidrack Proprietary License
@@ -52,8 +52,9 @@ if ( !class_exists( 'WP_Video_Capture' ) ) {
 				dbDelta( $sql );
 			}
 
-			// Add settings options 
+			// Add settings options
 			add_option( 'registration_email' );
+      add_option( 'display_branding', 1 );
 
 		}
 
@@ -65,6 +66,7 @@ if ( !class_exists( 'WP_Video_Capture' ) ) {
 
 			// Remove registration_email option
 			delete_option( 'registration_email' );
+      delete_option( 'display_branding' );
 
       // Remove hide notice information
       delete_user_meta( get_current_user_id(), '_wp-video-capture_hide_registration_notice' );
@@ -77,7 +79,7 @@ if ( !class_exists( 'WP_Video_Capture' ) ) {
       wp_register_script( 'icheck',
         plugin_dir_url( __FILE__ ) . 'lib/js/icheck.min.js', array( 'jquery' ), '1.0.1', true );
       wp_register_script( 'record_video',
-        plugin_dir_url( __FILE__ ) . 'js/record_video.js', array( 'jquery' ), '1.3.3', true );
+        plugin_dir_url( __FILE__ ) . 'js/record_video.js', array( 'jquery' ), '1.4', true );
       wp_register_script( 'swfobject',
         plugin_dir_url( __FILE__ ) . 'lib/js/swfobject.js', array(), '2.2', true );
 
@@ -96,7 +98,8 @@ if ( !class_exists( 'WP_Video_Capture' ) ) {
 					'timestamp' => current_time( 'timestamp' ),
           'ip' => $_SERVER['REMOTE_ADDR'],
           'site_name' => $this->hostname,
-					'plugin_url' => plugin_dir_url( __FILE__ )
+					'plugin_url' => plugin_dir_url( __FILE__ ),
+          'display_branding' => get_option( 'display_branding' )
 				)
 			);
 

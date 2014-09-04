@@ -27,7 +27,7 @@ class Video_Capture_Email {
       ',
       $this->headers
     );
- 
+
   }
 
   public function send_new_video_email( $to, $filename ) {

@@ -1,10 +1,10 @@
 === Video Capture ===
 Contributors: vincent-stark
 Donate link: http://vidrack.com/examples
-Tags: camera, capture, comments, media, plugin, posts, recorder, video, webcam, page, sidebar, widget, post, admin, shortcode, user generated video, video content, video marketing, video reviews, video testimonials, video submission, video upload, YouTube, Vimeo
+Tags: camera, capture, comments, media, plugin, posts, recorder, video, webcam, page, sidebar, widget, post, admin, shortcode, user generated video, video content, video marketing, video reviews, video testimonials, video submission, video upload, YouTube, Vimeo, webcam recorder, webcam recording, video recorder, video commenting, video comments, video posts, user generated content, video plugin, video interview
 Requires at least: 3.4
-Tested up to: 3.9
-Stable tag: 1.3.3
+Tested up to: 3.9.2
+Stable tag: 1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -81,6 +81,10 @@ The plugin *doesn't* use Adobe Flash on mobile devices.
 
 == Changelog ==
 
+= 1.4 =
+* Improved Flash Recorder.
+* Stability fixes.
+
 = 1.3.3 =
 * Minor fixes & improvements.
 
@@ -95,12 +99,15 @@ The plugin *doesn't* use Adobe Flash on mobile devices.
 
 = 1.2 =
 * Added mobile support.
-* Implemented better CDN integration. 
+* Implemented better CDN integration.
 
 = 1.0 =
 * First official release. Got everyone excited!
 
 == Upgrade Notice ==
+
+= 1.4 =
+Improved Flash Recorder. Upgrade is highly recommended.
 
 = 1.3.3 =
 Minor fixes. Upgrade is recommended.

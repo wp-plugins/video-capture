@@ -23,11 +23,11 @@ if ( !class_exists( 'WP_Video_Capture_Settings' ) ) {
 
     public function register_resources() {
       wp_register_script( 'record_video_admin_settings',
-        plugin_dir_url( __FILE__ ) . 'js/record_video_admin_settings.js', array( 'jquery' ), '1.3.3', true );
+        plugin_dir_url( __FILE__ ) . 'js/record_video_admin_settings.js', array( 'jquery' ), '1.4', true );
     }
 
 		public function validate_email( $email ) {
-			if ( !is_email( $email ) ) {
+			if ( !is_email( $email ) && $email != '' ) {
 				add_settings_error( 'registration_email', 'video-capture-invalid-email', 'Please enter a correct email' );
 			} else {
 				return $email;
@@ -48,10 +48,10 @@ if ( !class_exists( 'WP_Video_Capture_Settings' ) ) {
       if ( !isset( $_GET['wp-video-capture-nag'] ) ) {
         return;
       }
- 
+
       // Check nonce
       check_admin_referer( 'wp-video-capture-nag', 'wp-video-capture-nag' );
- 
+
       // Update user meta to indicate dismissed notice
       update_user_meta( get_current_user_id(), '_wp-video-capture_hide_registration_notice', true );
 
@@ -63,14 +63,15 @@ if ( !class_exists( 'WP_Video_Capture_Settings' ) ) {
 
 			// Display notification if not registered
       if ( !get_option( 'registration_email' )
-        && $pagenow == 'admin.php' 
+        && $pagenow == 'admin.php'
         && $_GET['page'] == 'wp_video_capture_settings'
         && !get_user_meta( get_current_user_id(), '_wp-video-capture_hide_registration_notice', true ) ) {
 				add_action( 'admin_notices', array( &$this, 'registration_email_notice' ) );
 			}
 
-			// Input validation
+			// Register and validate options
 			register_setting( 'wp_video_capture-group', 'registration_email', array( &$this, 'validate_email' ) );
+      register_setting( 'wp_video_capture-group', 'display_branding' );
 
 			// Add your settings section
 			add_settings_section(
@@ -92,6 +93,18 @@ if ( !class_exists( 'WP_Video_Capture_Settings' ) ) {
 				)
 			);
 
+      // Add branding checkbox
+      add_settings_field(
+        'wp_video_capture-display_branding',
+        'Display Branding',
+        array( &$this, 'settings_field_input_checkbox' ),
+        'wp_video_capture',
+        'wp_video_capture-section',
+        array(
+          'field' => 'display_branding'
+        )
+      );
+
 		}
 
 		public function settings_section_wp_video_capture() {
@@ -99,21 +112,15 @@ if ( !class_exists( 'WP_Video_Capture_Settings' ) ) {
 		}
 
 		public function settings_field_input_text( $args ) {
-			// Get the field name from the $args array
 			$field = $args['field'];
-			// Get the value of this setting
 			$value = get_option( $field );
-			// echo a proper input type="text"
 			echo sprintf( '<input type="text" name="%s" id="%s" value="%s" />', $field, $field, $value );
 		}
 
 		public function settings_field_input_checkbox( $args ) {
-			// Get the field name from the $args array
 			$field = $args['field'];
-			// Get the value of this setting
 			$value = get_option( $field );
-			// echo a proper input type="text"
-			echo sprintf( '<input type="checkbox" name="%s" id="%s" value="true" %s/>', $field, $field, checked( $value, 'true', '' ) );
+			echo sprintf( '<input type="checkbox" name="%s" id="%s" value="1" %s/>', $field, $field, checked( $value, 1, '' ) );
 		}
 
 		public function add_menu() {

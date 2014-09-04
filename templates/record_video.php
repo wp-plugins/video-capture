@@ -13,14 +13,14 @@
       </div>
       <a href="#" class="wp-video-capture-record-button-mobile"><img src="<?php echo plugin_dir_url(__FILE__) ?>../images/button_record.jpg"></a>
       <input class="wp-video-capture-file-selector" type="file" accept="video/*;capture=camera" capture="camera" style="display: none;" />
-  
+
       <div class="wp-video-capture-terms-and-conditions" style="display: none;">
         <label>
           <input class="wp-video-capture-tnc-checkbox" type="checkbox" />
           <a class="wp-video-capture-tnc-link" href="#">Terms and Conditions</a>
         </label>
       </div>
-  
+
       <a href="#" class="wp-video-capture-upload-button" style="display: none;"><img src="<?php echo plugin_dir_url(__FILE__) ?>../images/button_upload.png"></a>
     </form>
   </div>
@@ -32,7 +32,7 @@
         <p>Your browser doesn't support Adobe Flash, sorry...</p>
       </div>
     </div>
-  
+
     <a href="#" class="wp-video-capture-record-button-desktop"><img src="<?php echo plugin_dir_url(__FILE__) ?>../images/button_record.jpg"></a>
   </div>
 

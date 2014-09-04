@@ -17,7 +17,8 @@ jQuery(function() {
       ajaxurl: VideoCapture.ajaxurl,
       timestamp: VideoCapture.timestamp,
       ip: VideoCapture.ip,
-      site_name: VideoCapture.site_name
+      site_name: VideoCapture.site_name,
+      backLink: VideoCapture.display_branding
     };
 
     // Embed SWFObject
@@ -37,17 +38,17 @@ jQuery(function() {
     e.preventDefault();
     e.stopPropagation();
   });
- 
+
   // Initialize checkbox
   jQuery('.wp-video-capture-tnc-checkbox').iCheck({
     checkboxClass: 'icheckbox_flat-green'
   });
-  
+
   // Mobile "Record" button
   jQuery('.wp-video-capture-record-button-mobile').click(function(event) {
     var d = jQuery(this).closest('div');
 
-  	d.find('.wp-video-capture-file-selector').click(); 
+  	d.find('.wp-video-capture-file-selector').click();
     d.find('.wp-video-capture-upload-button').show();
     d.find('.wp-video-capture-terms-and-conditions').show();
 
@@ -57,7 +58,7 @@ jQuery(function() {
 
   // Bind to upload button click
   jQuery('.wp-video-capture-upload-button').click(function(event) {
-  
+
     var d = jQuery(this).closest('div');
     if (!d.find('.wp-video-capture-tnc-checkbox').attr('checked')) {
       alert('Please agree to the Terms and Conditions by checking the box');
@@ -71,7 +72,7 @@ jQuery(function() {
     d.find('.wp-video-capture-ajax-error-store').hide();
     d.find('.wp-video-capture-ajax-error-upload').hide();
     d.find('.wp-video-capture-progress-container').show();
- 
+
     var form = d.find('.wp-video-capture-mobile-form');
     var got_file = d.find('.wp-video-capture-file-selector').val().replace(/.*(\/|\\)/, '');
 
@@ -81,14 +82,14 @@ jQuery(function() {
 
     // Sanitize filename
     var filename =
-      VideoCapture.timestamp + '_' + 
+      VideoCapture.timestamp + '_' +
       VideoCapture.site_name + '_' +
       got_file.replace(/\W/g, '') + '.' + ext;
 
     var form_data = new FormData();
     form_data.append('filename', filename);
     form_data.append('video', d.find('.wp-video-capture-file-selector')[0].files[0]);
-    
+
     // Store video on the server
     jQuery.ajax({
       url: form.attr('action'),
@@ -146,7 +147,7 @@ jQuery(function() {
             d.find('.wp-video-capture-ajax-error-store').html('Error storing video (AJAX): ' + textStatus);
             d.find('.wp-video-capture-ajax-error-store').show();
           });
-   
+
         } else {
           d.find('.wp-video-capture-ajax-error-upload').html('Error uploading video: ' + data.message);
           d.find('.wp-video-capture-ajax-error-upload').show();
