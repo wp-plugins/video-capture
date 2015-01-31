@@ -4,8 +4,8 @@ Author URI: http://vidrack.com
 Plugin URI: http://vidrack.com/examples/
 Tags: camera, capture, comments, media, plugin, posts, recorder, video, webcam, page, sidebar, widget, post, admin, shortcode, user generated video, video content, video marketing, video reviews, video testimonials, video submission, video upload, YouTube, Vimeo, webcam recorder, webcam recording, video recorder, video commenting, video comments, video posts, user generated content, video plugin, video interview
 Requires at least: 3.4
-Tested up to: 4.0
-Stable tag: 1.4.1
+Tested up to: 4.1
+Stable tag: 1.4.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -82,6 +82,10 @@ The plugin *doesn't* use Adobe Flash on mobile devices.
 
 == Changelog ==
 
+= 1.4.2 =
+* Minor fix to the video handling code for high-traffic websites.
+* WordPress 4.1 support.
+
 = 1.4.1 =
 * Improved video recording quality.
 * WordPress 4.0 support.
@@ -110,6 +114,9 @@ The plugin *doesn't* use Adobe Flash on mobile devices.
 * First official release. Got everyone excited!
 
 == Upgrade Notice ==
+
+= 1.4.2 =
+Minor fix to the video handling code for high-traffic websites.
 
 = 1.4.1 =
 Improved video recording quality. WordPress 4.0 support. Upgrade is highly recommended.

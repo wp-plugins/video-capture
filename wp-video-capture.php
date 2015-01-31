@@ -3,7 +3,7 @@
 Plugin Name: Video Capture
 Plugin URI: http://vidrack.com/demo
 Description: Add a video camera to your website!
-Version: 1.4.1
+Version: 1.4.2
 Author: Vidrack.com
 Author URI: http://vidrack.com
 License: Vidrack Proprietary License
@@ -95,7 +95,7 @@ if ( !class_exists( 'WP_Video_Capture' ) ) {
 				'VideoCapture',
 				array(
 					'ajaxurl' => admin_url( 'admin-ajax.php' ),
-					'timestamp' => current_time( 'timestamp' ),
+					'timestamp' => round( microtime(true) * 1000 ),
           'ip' => $_SERVER['REMOTE_ADDR'],
           'site_name' => $this->hostname,
 					'plugin_url' => plugin_dir_url( __FILE__ ),
@@ -159,7 +159,7 @@ if ( !class_exists( 'WP_Video_Capture' ) ) {
 				array(
 					'filename' => $_REQUEST['filename'],
 					'ip' => $_REQUEST['ip'],
-					'uploaded_at' => date( 'Y-m-d H:i:s', $_REQUEST['timestamp'] )
+					'uploaded_at' => date( 'Y-m-d H:i:s', round( intval($_REQUEST['timestamp']) / 1000 ) )
 				)
 			);
 
