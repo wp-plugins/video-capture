@@ -1,12 +1,12 @@
 <?php
 /*
-Plugin Name: Video Capture
-Plugin URI: http://vidrack.com/demo
+Plugin Name: Vidrack Video Capture
+Plugin URI: http://vidrack.com
 Description: Add a video camera to your website!
-Version: 1.4.2
+Version: 1.5
 Author: Vidrack.com
 Author URI: http://vidrack.com
-License: Vidrack Proprietary License
+License: GPLv2 or later
 */
 
 if ( !class_exists( 'WP_Video_Capture' ) ) {
@@ -33,6 +33,7 @@ if ( !class_exists( 'WP_Video_Capture' ) ) {
 
       // Initialize shortcode
 			add_shortcode( 'record_video', array( &$this, 'record_video' ) );
+      add_shortcode( 'vidrack', array( &$this, 'record_video' ) );
 
 		}
 
@@ -95,7 +96,7 @@ if ( !class_exists( 'WP_Video_Capture' ) ) {
 				'VideoCapture',
 				array(
 					'ajaxurl' => admin_url( 'admin-ajax.php' ),
-					'timestamp' => round( microtime(true) * 1000 ),
+					'timestamp' => (string)round( microtime(true) * 1000 ),
           'ip' => $_SERVER['REMOTE_ADDR'],
           'site_name' => $this->hostname,
 					'plugin_url' => plugin_dir_url( __FILE__ ),

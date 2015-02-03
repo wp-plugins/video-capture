@@ -76,7 +76,7 @@ if ( !class_exists( 'WP_Video_Capture_Settings' ) ) {
 			// Add your settings section
 			add_settings_section(
 				'wp_video_capture-section',
-				'WP Video Capture Settings',
+				'Settings',
 				array( &$this, 'settings_section_wp_video_capture' ),
 				'wp_video_capture'
 			);
@@ -124,21 +124,31 @@ if ( !class_exists( 'WP_Video_Capture_Settings' ) ) {
 		}
 
 		public function add_menu() {
-			// Add a page to manage this plugin's settings
+			// Vidrack
 			add_menu_page(
-				'Video Capture - Captured Videos',
-				'Video Capture',
+				'Vidrack - Recorded Videos',
+				'Vidrack',
 				'manage_options',
 				'wp_video_capture_videos',
 				array( &$this, 'plugin_videos_page' ),
-        plugin_dir_url( __FILE__ ) . 'images/video-icon.gif',
+        plugin_dir_url( __FILE__ ) . 'images/icon_vidrack.png',
         12.576
 			);
 
-			// Add a page to see captured videos
+      // Recorded Videos
+      add_submenu_page(
+        'wp_video_capture_videos',
+        'Vidrack - Recorded Videos',
+        'Videos',
+        'manage_options',
+        'wp_video_capture_videos',
+        array( &$this, 'plugin_videos_page' )
+      );
+
+			// Settings
 			add_submenu_page(
 				'wp_video_capture_videos',
-				'Video Capture - Settings',
+				'Vidrack - Settings',
 				'Settings',
 				'manage_options',
 				'wp_video_capture_settings',
