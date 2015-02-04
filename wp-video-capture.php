@@ -3,7 +3,7 @@
 Plugin Name: Vidrack Video Capture
 Plugin URI: http://vidrack.com
 Description: Add a video camera to your website!
-Version: 1.5
+Version: 1.5.1
 Author: Vidrack.com
 Author URI: http://vidrack.com
 License: GPLv2 or later
@@ -80,7 +80,7 @@ if ( !class_exists( 'WP_Video_Capture' ) ) {
       wp_register_script( 'icheck',
         plugin_dir_url( __FILE__ ) . 'lib/js/icheck.min.js', array( 'jquery' ), '1.0.1', true );
       wp_register_script( 'record_video',
-        plugin_dir_url( __FILE__ ) . 'js/record_video.js', array( 'jquery' ), '1.4.1', true );
+        plugin_dir_url( __FILE__ ) . 'js/record_video.js', array( 'jquery' ), '1.5.1', true );
       wp_register_script( 'swfobject',
         plugin_dir_url( __FILE__ ) . 'lib/js/swfobject.js', array(), '2.2', true );
 
@@ -96,7 +96,7 @@ if ( !class_exists( 'WP_Video_Capture' ) ) {
 				'VideoCapture',
 				array(
 					'ajaxurl' => admin_url( 'admin-ajax.php' ),
-					'timestamp' => (string)round( microtime(true) * 1000 ),
+					'timestamp' => (string)number_format( round(microtime(true) * 1000), 0, '', '' ),
           'ip' => $_SERVER['REMOTE_ADDR'],
           'site_name' => $this->hostname,
 					'plugin_url' => plugin_dir_url( __FILE__ ),
@@ -143,7 +143,7 @@ if ( !class_exists( 'WP_Video_Capture' ) ) {
 			if ( !isset($_REQUEST['timestamp']) || !(
 					( (string) (int) $_REQUEST['timestamp'] === $_REQUEST['timestamp'] )
 					&& ( $_REQUEST['timestamp'] <= PHP_INT_MAX )
-					&& ( $_REQUEST['timestamp']>= ~PHP_INT_MAX ) ) ) {
+					&& ( $_REQUEST['timestamp'] >= ~PHP_INT_MAX ) ) ) {
 				echo json_encode( array( 'status' => 'error', 'message' => 'Timestamp is not set.' ) );
 				die();
 			}
@@ -160,7 +160,7 @@ if ( !class_exists( 'WP_Video_Capture' ) ) {
 				array(
 					'filename' => $_REQUEST['filename'],
 					'ip' => $_REQUEST['ip'],
-					'uploaded_at' => date( 'Y-m-d H:i:s', round( intval($_REQUEST['timestamp']) / 1000 ) )
+					'uploaded_at' => current_time( 'mysql' )
 				)
 			);
 

@@ -83,8 +83,8 @@ jQuery(function() {
     // Sanitize filename
     var filename =
       VideoCapture.timestamp + '_' +
-      VideoCapture.site_name + '_' +
-      got_file.replace(/\W/g, '') + '.' + ext;
+      VideoCapture.site_name + '.' +
+      ext.toLowerCase();
 
     var form_data = new FormData();
     form_data.append('filename', filename);
@@ -160,7 +160,7 @@ jQuery(function() {
         d.find('.wp-video-capture-upload-button').hide();
         d.find('.wp-video-capture-tnc-checkbox').iCheck('uncheck');
         // Increase timestamp to correctly re-use the form
-        VideoCapture.timestamp = parseInt(VideoCapture.timestamp) + 1;
+        VideoCapture.timestamp = String(parseInt(VideoCapture.timestamp) + 1000);
       }
 
     });
