@@ -3,7 +3,7 @@
 Plugin Name: Vidrack Video Capture
 Plugin URI: http://vidrack.com
 Description: Add a video camera to your website!
-Version: 1.5.1
+Version: 1.5.2
 Author: Vidrack.com
 Author URI: http://vidrack.com
 License: GPLv2 or later
@@ -80,7 +80,7 @@ if ( !class_exists( 'WP_Video_Capture' ) ) {
       wp_register_script( 'icheck',
         plugin_dir_url( __FILE__ ) . 'lib/js/icheck.min.js', array( 'jquery' ), '1.0.1', true );
       wp_register_script( 'record_video',
-        plugin_dir_url( __FILE__ ) . 'js/record_video.js', array( 'jquery' ), '1.5.1', true );
+        plugin_dir_url( __FILE__ ) . 'js/record_video.js', array( 'jquery' ), '1.5.2', true );
       wp_register_script( 'swfobject',
         plugin_dir_url( __FILE__ ) . 'lib/js/swfobject.js', array(), '2.2', true );
 
@@ -140,10 +140,7 @@ if ( !class_exists( 'WP_Video_Capture' ) ) {
 				die();
 			}
 
-			if ( !isset($_REQUEST['timestamp']) || !(
-					( (string) (int) $_REQUEST['timestamp'] === $_REQUEST['timestamp'] )
-					&& ( $_REQUEST['timestamp'] <= PHP_INT_MAX )
-					&& ( $_REQUEST['timestamp'] >= ~PHP_INT_MAX ) ) ) {
+			if ( !isset($_REQUEST['timestamp']) ) {
 				echo json_encode( array( 'status' => 'error', 'message' => 'Timestamp is not set.' ) );
 				die();
 			}
