@@ -1,5 +1,9 @@
 jQuery(function() {
 
+  // Video upload file version
+  // Increases with each form reuse
+  var version = 1;
+
   // Detect if we're on desktop or mobile
   if (swfobject.getFlashPlayerVersion().major != 0) {
     jQuery('.wp-video-capture-mobile').hide();
@@ -82,7 +86,8 @@ jQuery(function() {
 
     // Sanitize filename
     var filename =
-      VideoCapture.timestamp + '_' +
+      VideoCapture.timestamp + '_v' +
+      version + '_' +
       VideoCapture.site_name + '.' +
       ext.toLowerCase();
 
@@ -159,8 +164,8 @@ jQuery(function() {
         d.find('.wp-video-capture-terms-and-conditions').hide();
         d.find('.wp-video-capture-upload-button').hide();
         d.find('.wp-video-capture-tnc-checkbox').iCheck('uncheck');
-        // Increase timestamp to correctly re-use the form
-        VideoCapture.timestamp = String(parseInt(VideoCapture.timestamp) + 1000);
+        // Increase version to correctly re-use the form and not overwrite the previous video
+        version += 1;
       }
 
     });

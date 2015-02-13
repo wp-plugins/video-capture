@@ -5,7 +5,7 @@ Plugin URI: http://vidrack.com
 Tags: camera, capture, comments, media, plugin, posts, recorder, video, webcam, page, sidebar, widget, post, admin, shortcode, user generated video, video content, video marketing, video reviews, video testimonials, video submission, video upload, YouTube, Vimeo, webcam recorder, webcam recording, video recorder, video commenting, video comments, video posts, user generated content, video plugin, video interview, vidrack
 Requires at least: 3.4
 Tested up to: 4.1
-Stable tag: 1.5.2
+Stable tag: 1.5.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -81,6 +81,9 @@ The plugin *doesn't* use Adobe Flash on mobile devices.
 
 == Changelog ==
 
+= 1.5.3 =
+* Solve a minor video naming problem.
+
 = 1.5.2 =
 * Improve compatibility with 32 bit PHP.
 
@@ -123,6 +126,9 @@ The plugin *doesn't* use Adobe Flash on mobile devices.
 * First official release. Got everyone excited!
 
 == Upgrade Notice ==
+
+= 1.5.3 =
+Solve a minor video naming problem.
 
 = 1.5.2 =
 Update is highly recommended if you run PHP on 32 bit OS.
