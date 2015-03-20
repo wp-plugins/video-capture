@@ -38,7 +38,7 @@ class Video_Capture_Email {
       <p>Hello,<br/>
       <br/>
       You have a new video at ' . $this->hostname . '!<br/>
-      <a href="' . $filename . '" download>Click here to download</a><br/>
+      <a href="http://vidrack-media.s3.amazonaws.com/' . $filename . '" download>Click here to download</a><br/>
       <br/>
       Kind regards,<br/>
       Vidrack Team<br/>

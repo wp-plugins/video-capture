@@ -38,7 +38,7 @@ class Video_List_Table extends WP_List_Table {
 		);
 
 		// Return the title contents
-		return sprintf( '%1$s <span style="color:silver">(id:%2$s)</span>%3$s',
+		return sprintf( '<span class="vidrack-filename">%1$s</span> <span style="color:silver">(id:%2$s)</span>%3$s',
 			$item['filename'],
 			$item['id'],
 			$this->row_actions( $actions )
@@ -90,7 +90,7 @@ class Video_List_Table extends WP_List_Table {
 						$wpdb->delete( $wpdb->prefix . 'video_capture', array( 'id' => $video ) );
 					}
 				} else {
-					// Delete single video
+					// Delete a single video
 					$wpdb->delete( $wpdb->prefix . 'video_capture', array( 'id' => $_REQUEST['video'] ) );
 				}
 			}

@@ -141,7 +141,7 @@ jQuery(function() {
               'ip': VideoCapture.ip,
             }
           ).done(function(data) {
-            if (data.status == 'success') {
+            if (data.status === 'success') {
               d.find('.wp-video-capture-ajax-success-store').html('Success storing video: ' + data.message);
               d.find('.wp-video-capture-ajax-success-store').show();
             } else {

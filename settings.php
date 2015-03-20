@@ -23,12 +23,12 @@ if ( !class_exists( 'WP_Video_Capture_Settings' ) ) {
 
     public function register_resources() {
       wp_register_script( 'record_video_admin_settings',
-        plugin_dir_url( __FILE__ ) . 'js/record_video_admin_settings.js', array( 'jquery' ), '1.5.5', true );
+        plugin_dir_url( __FILE__ ) . 'js/record_video_admin_settings.js', array( 'jquery' ), '1.6', true );
     }
 
 		public function validate_email( $email ) {
 			if ( !is_email( $email ) && $email != '' ) {
-				add_settings_error( 'registration_email', 'video-capture-invalid-email', 'Please enter a correct email' );
+				add_settings_error( 'vidrack_registration_email', 'video-capture-invalid-email', 'Please enter a correct email' );
 			} else {
 				return $email;
 			}
@@ -70,8 +70,8 @@ if ( !class_exists( 'WP_Video_Capture_Settings' ) ) {
 			}
 
 			// Register and validate options
-			register_setting( 'wp_video_capture-group', 'registration_email', array( &$this, 'validate_email' ) );
-      register_setting( 'wp_video_capture-group', 'display_branding' );
+			register_setting( 'wp_video_capture-group', 'vidrack_registration_email', array( &$this, 'validate_email' ) );
+      register_setting( 'wp_video_capture-group', 'vidrack_display_branding' );
 
 			// Add your settings section
 			add_settings_section(
@@ -89,7 +89,7 @@ if ( !class_exists( 'WP_Video_Capture_Settings' ) ) {
 				'wp_video_capture',
 				'wp_video_capture-section',
 				array(
-					'field' => 'registration_email'
+					'field' => 'vidrack_registration_email'
 				)
 			);
 
@@ -101,7 +101,7 @@ if ( !class_exists( 'WP_Video_Capture_Settings' ) ) {
         'wp_video_capture',
         'wp_video_capture-section',
         array(
-          'field' => 'display_branding'
+          'field' => 'vidrack_display_branding'
         )
       );
 

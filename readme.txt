@@ -5,7 +5,7 @@ Plugin URI: http://vidrack.com
 Tags: camera, capture, comments, media, plugin, posts, recorder, video, webcam, page, sidebar, widget, post, admin, shortcode, user generated video, video content, video marketing, video reviews, video testimonials, video submission, video upload, YouTube, Vimeo, webcam recorder, webcam recording, video recorder, video commenting, video comments, video posts, user generated content, video plugin, video interview, vidrack
 Requires at least: 3.4
 Tested up to: 4.1
-Stable tag: 1.5.5
+Stable tag: 1.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -81,8 +81,10 @@ The plugin *doesn't* use Adobe Flash on mobile devices.
 
 == Changelog ==
 
-= 1.5.5 =
+= 1.6 =
 * Improve captured video quality.
+* Improve Flash recorder.
+* Move to a much better video hosting infrastructure.
 
 = 1.5.4 =
 * Rollback to F4V format for better browser compatibility.
@@ -133,8 +135,8 @@ The plugin *doesn't* use Adobe Flash on mobile devices.
 
 == Upgrade Notice ==
 
-= 1.5.5 =
-Improved captured video quality. Update is highly recommended.
+= 1.6 =
+Much better video quality and tons of other great changes. Update is highly recommended.
 
 = 1.5.4 =
 Rollback to F4V format for better browser compatibility.
