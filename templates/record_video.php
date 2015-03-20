@@ -2,7 +2,7 @@
 
   <!-- Mobile Version -->
   <div class="wp-video-capture-mobile">
-    <form class="wp-video-capture-mobile-form" method="post" action="http://upload.vidrack.com/video">
+    <form class="wp-video-capture-mobile-form" method="post" action="http://storage.vidrack.com/video">
       <div class="wp-video-capture-ajax-success-store" style="display: none;"></div>
       <div class="wp-video-capture-ajax-success-upload" style="display: none;"></div>
       <div class="wp-video-capture-ajax-error-store" style="display: none;"></div>

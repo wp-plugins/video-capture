@@ -38,7 +38,7 @@ class Video_Capture_Email {
       <p>Hello,<br/>
       <br/>
       You have a new video at ' . $this->hostname . '!<br/>
-      <a download="' . $filename . '" href="http://txbh2l.cloud.influxis.com/videoRecorder/streams/_definst_/' . $filename . '">Click here to download</a><br/>
+      <a href="' . $filename . '" download>Click here to download</a><br/>
       <br/>
       Kind regards,<br/>
       Vidrack Team<br/>

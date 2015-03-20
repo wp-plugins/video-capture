@@ -23,7 +23,7 @@ if ( !class_exists( 'WP_Video_Capture_Settings' ) ) {
 
     public function register_resources() {
       wp_register_script( 'record_video_admin_settings',
-        plugin_dir_url( __FILE__ ) . 'js/record_video_admin_settings.js', array( 'jquery' ), '1.5.4', true );
+        plugin_dir_url( __FILE__ ) . 'js/record_video_admin_settings.js', array( 'jquery' ), '1.5.5', true );
     }
 
 		public function validate_email( $email ) {
@@ -62,7 +62,7 @@ if ( !class_exists( 'WP_Video_Capture_Settings' ) ) {
       global $pagenow;
 
 			// Display notification if not registered
-      if ( !get_option( 'registration_email' )
+      if ( !get_option( 'vidrack_registration_email' )
         && $pagenow == 'admin.php'
         && $_GET['page'] == 'wp_video_capture_settings'
         && !get_user_meta( get_current_user_id(), '_wp-video-capture_hide_registration_notice', true ) ) {

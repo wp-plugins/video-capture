@@ -3,7 +3,7 @@
 Plugin Name: Vidrack Video Capture
 Plugin URI: http://vidrack.com
 Description: Add a video camera to your website!
-Version: 1.5.4
+Version: 1.5.5
 Author: Vidrack.com
 Author URI: http://vidrack.com
 License: GPLv2 or later
@@ -11,6 +11,8 @@ License: GPLv2 or later
 
 if ( !class_exists( 'WP_Video_Capture' ) ) {
 	class WP_Video_Capture {
+
+    private static $vidrack_version = '1.5.5';
 
 		public function __construct() {
 
@@ -31,6 +33,9 @@ if ( !class_exists( 'WP_Video_Capture' ) ) {
 			add_action( 'wp_ajax_store_video_file', array( &$this, 'store_video_file' ) );
 			add_action( 'wp_ajax_nopriv_store_video_file', array( &$this, 'store_video_file' ) );
 
+      // Check for DB update
+      add_action( 'plugins_loaded', array( &$this, 'update_check' ) );
+
       // Initialize shortcode
 			add_shortcode( 'record_video', array( &$this, 'record_video' ) );
       add_shortcode( 'vidrack', array( &$this, 'record_video' ) );
@@ -43,36 +48,57 @@ if ( !class_exists( 'WP_Video_Capture' ) ) {
 			global $wpdb;
 			$table_name = $wpdb->prefix . "video_capture";
 			if ( $wpdb->get_var( "SHOW TABLES LIKE '$table_name'" ) != $table_name ) {
-				$sql = 'CREATE TABLE ' . $table_name. ' (
-    		  id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    		  filename VARCHAR(255),
-    		  ip VARCHAR(255),
-    		  uploaded_at DATETIME
-    		)';
+				$sql = "CREATE TABLE $table_name (
+    		          id int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    		          filename VARCHAR(255),
+    		          ip VARCHAR(255),
+    		          uploaded_at DATETIME
+    		        )
+        ";
 				require_once ABSPATH . 'wp-admin/includes/upgrade.php';
 				dbDelta( $sql );
 			}
 
 			// Add settings options
-			add_option( 'registration_email' );
-      add_option( 'display_branding', 1 );
+			add_option( 'vidrack_registration_email' );
+      add_option( 'vidrack_display_branding', 1 );
+      add_option( 'vidrack_version', self::$vidrack_version );
 
 		}
 
-		public static function deactivate() {
+		public static function uninstall() {
 			// Remove database table
 			global $wpdb;
-			$table_name = $wpdb->prefix . "video_capture";
+			$table_name = $wpdb->prefix . 'video_capture';
 			$wpdb->query( 'DROP TABLE IF EXISTS ' . $table_name );
 
 			// Remove registration_email option
-			delete_option( 'registration_email' );
-      delete_option( 'display_branding' );
+			delete_option( 'vidrack_registration_email' );
+      delete_option( 'vidrack_display_branding' );
+      delete_option( 'vidrack_version ');
 
       // Remove hide notice information
       delete_user_meta( get_current_user_id(), '_wp-video-capture_hide_registration_notice' );
 
 		}
+
+    public static function update_check() {
+      if ( get_site_option( 'vidrack_version' ) != self::$vidrack_version ) {
+        self::update();
+      }
+    }
+
+    public static function update() {
+      $installed_ver = get_option( 'vidrack_version' );
+
+      if ( $installed_ver != self::$vidrack_version ) {
+        // Remove old options
+        delete_option( 'registration_email' );
+        delete_option( 'display_branding' );
+
+        update_option( 'vidrack_version', self::$vidrack_version );
+      }
+    }
 
     public function register_resources() {
 
@@ -80,7 +106,7 @@ if ( !class_exists( 'WP_Video_Capture' ) ) {
       wp_register_script( 'icheck',
         plugin_dir_url( __FILE__ ) . 'lib/js/icheck.min.js', array( 'jquery' ), '1.0.1', true );
       wp_register_script( 'record_video',
-        plugin_dir_url( __FILE__ ) . 'js/record_video.js', array( 'jquery' ), '1.5.4', true );
+        plugin_dir_url( __FILE__ ) . 'js/record_video.js', array( 'jquery' ), '1.5.5', true );
       wp_register_script( 'swfobject',
         plugin_dir_url( __FILE__ ) . 'lib/js/swfobject.js', array(), '2.2', true );
 
@@ -100,7 +126,7 @@ if ( !class_exists( 'WP_Video_Capture' ) ) {
           'ip' => $_SERVER['REMOTE_ADDR'],
           'site_name' => $this->hostname,
 					'plugin_url' => plugin_dir_url( __FILE__ ),
-          'display_branding' => get_option( 'display_branding' )
+          'display_branding' => get_option( 'vidrack_display_branding' )
 				)
 			);
 
@@ -170,7 +196,7 @@ if ( !class_exists( 'WP_Video_Capture' ) ) {
 				echo json_encode( array( 'status' => 'success', 'message' => 'Done!' ) );
 
         // Send email notification
-        if ( $to = get_option( 'registration_email' ) ) {
+        if ( $to = get_option( 'vidrack_registration_email' ) ) {
           $this->video_capture_email->send_new_video_email( $to, $_REQUEST['filename'] );
         }
 
@@ -185,7 +211,7 @@ if ( class_exists( 'WP_Video_Capture' ) ) {
 
 	// Installation and uninstallation hooks
 	register_activation_hook( __FILE__, array( 'WP_Video_Capture', 'activate' ) );
-	register_deactivation_hook( __FILE__, array( 'WP_Video_Capture', 'deactivate' ) );
+	register_uninstall_hook( __FILE__, array( 'WP_Video_Capture', 'uninstall' ) );
 
 	// Instantiate the plugin class
 	$wp_video_capture = new WP_Video_Capture();

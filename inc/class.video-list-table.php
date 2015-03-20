@@ -20,12 +20,12 @@ class Video_List_Table extends WP_List_Table {
 
 	function column_default( $item, $column_name ) {
 		switch ( $column_name ) {
-		case 'filename':
-		case 'ip':
-		case 'uploaded_at':
-			return $item[$column_name];
-		default:
-			return print_r( $item, true ); // Show the whole array for troubleshooting purposes
+		  case 'filename':
+		  case 'ip':
+		  case 'uploaded_at':
+		  	return $item[$column_name];
+		  default:
+		  	return print_r( $item, true ); // Show the whole array for troubleshooting purposes
 		}
 	}
 
@@ -33,15 +33,15 @@ class Video_List_Table extends WP_List_Table {
 
 		// Build row actions
 		$actions = array(
-			'download'  => sprintf( '<a download="%s" href="http://txbh2l.cloud.influxis.com/videoRecorder/streams/_definst_/%s">Download</a>', $item['filename'], $item['filename'] ),
+			'download'  => sprintf( '<a href="http://vidrack-media.s3.amazonaws.com/%s" download>Download</a>', $item['filename'] ),
 			'delete'    => sprintf( '<a class="wp-video-capture-delete-video" href="?page=%s&action=%s&video=%s">Delete</a>', $_REQUEST['page'], 'delete', $item['id'] ),
 		);
 
 		// Return the title contents
 		return sprintf( '%1$s <span style="color:silver">(id:%2$s)</span>%3$s',
-			/*$1%s*/ $item['filename'],
-			/*$2%s*/ $item['id'],
-			/*$3%s*/ $this->row_actions( $actions )
+			$item['filename'],
+			$item['id'],
+			$this->row_actions( $actions )
 		);
 	}
 
