@@ -1,11 +1,11 @@
-=== Vidrack Video Capture ===
+=== Video Recorder ===
 Contributors: vincent-stark
 Author URI: http://vidrack.com
 Plugin URI: http://vidrack.com
 Tags: camera, capture, comments, media, plugin, posts, recorder, video, webcam, page, sidebar, widget, post, admin, shortcode, user generated video, video content, video marketing, video reviews, video testimonials, video submission, video upload, YouTube, Vimeo, webcam recorder, webcam recording, video recorder, video commenting, video comments, video posts, user generated content, video plugin, video interview, vidrack
 Requires at least: 3.4
 Tested up to: 4.1
-Stable tag: 1.6
+Stable tag: 1.6.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,7 +13,7 @@ A Video Camera on Your Website. Webcam Recorder by Vidrack. Easily gather user g
 
 == Description ==
 
-* [Vidrack Video Capture](http://vidrack.com) is a 'record video' button you can place anywhere on your website.
+* [Video Recorder](http://vidrack.com) is a 'record video' button you can place anywhere on your website.
 * It's just a button that activates your website visitors webcam or mobile camera.
 * You can customize text around the button asking for specific types of videos.
 * These could be video reviews, testimonials, opinions, auditions, news and interviews.
@@ -74,12 +74,16 @@ The plugin *doesn't* use Adobe Flash on mobile devices.
 
 == Screenshots ==
 
-1. Vidrack Video Capture in action (button)
-2. Vidrack Video Capture in action (capture)
+1. Video Recorder in action (button)
+2. Video Recorder in action (capture)
 3. List of captured videos
 4. Settings
 
 == Changelog ==
+
+= 1.6.1 =
+* Fix jQuery-related bug.
+* Rename plugin to 'Video Capture'
 
 = 1.6 =
 * Improve captured video quality.
@@ -134,6 +138,9 @@ The plugin *doesn't* use Adobe Flash on mobile devices.
 * First official release. Got everyone excited!
 
 == Upgrade Notice ==
+
+= 1.6.1 =
+Fix the problem with jQuery on some of the websites.
 
 = 1.6 =
 Much better video quality and tons of other great changes. Update is highly recommended.

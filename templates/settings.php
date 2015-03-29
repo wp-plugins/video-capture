@@ -1,5 +1,5 @@
 <div class="wrap">
-  <h2>Vidrack Video Capture</h2>
+  <h2>Video Recorder</h2>
   <h4>Brought to you by <a href="http://vidrack.com" target="_blank">vidrack.com</a></h4>
   <form method="post" action="options.php">
     <?php settings_errors('registration_email') ?>

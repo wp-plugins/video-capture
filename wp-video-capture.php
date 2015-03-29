@@ -1,9 +1,9 @@
 <?php
 /*
-Plugin Name: Vidrack Video Capture
+Plugin Name: Video Recorder
 Plugin URI: http://vidrack.com
 Description: Add a video camera to your website!
-Version: 1.6
+Version: 1.6.1
 Author: Vidrack.com
 Author URI: http://vidrack.com
 License: GPLv2 or later
@@ -12,7 +12,7 @@ License: GPLv2 or later
 if ( !class_exists( 'WP_Video_Capture' ) ) {
 	class WP_Video_Capture {
 
-    private static $vidrack_version = '1.6';
+    private static $vidrack_version = '1.6.1';
 
 		public function __construct() {
 
@@ -106,7 +106,7 @@ if ( !class_exists( 'WP_Video_Capture' ) ) {
       wp_register_script( 'icheck',
         plugin_dir_url( __FILE__ ) . 'lib/js/icheck.min.js', array( 'jquery' ), '1.0.1', true );
       wp_register_script( 'record_video',
-        plugin_dir_url( __FILE__ ) . 'js/record_video.js', array( 'jquery' ), '1.6', true );
+        plugin_dir_url( __FILE__ ) . 'js/record_video.js', array( 'jquery' ), '1.6.1', true );
       wp_register_script( 'swfobject',
         plugin_dir_url( __FILE__ ) . 'lib/js/swfobject.js', array(), '2.2', true );
 
@@ -141,7 +141,8 @@ if ( !class_exists( 'WP_Video_Capture' ) ) {
 			ob_start();
 
       // Render template
-			wp_enqueue_script( 'icheck' );
+			wp_enqueue_script( 'jquery' );
+      wp_enqueue_script( 'icheck' );
 			wp_enqueue_style( 'icheck-skin' );
 			wp_enqueue_script( 'swfobject' );
 			wp_enqueue_script( 'record_video' );

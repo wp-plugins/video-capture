@@ -10,7 +10,7 @@ class Video_Capture_Email {
     // Email headers
     $this->headers[] = 'MIME-Version: 1.0';
     $this->headers[] = 'Content-type: text/html; charset=utf-8';
-    $this->headers[] = 'From: Video Capture Plugin <vidrack@' . preg_replace('/^www\./', '', $hostname) . '>';
+    $this->headers[] = 'From: Video Recorder Plugin <vidrack@' . preg_replace('/^www\./', '', $hostname) . '>';
     $this->headers[] = 'Reply-to: Vidrack <info@vidrack.com>';
 
   }
@@ -18,7 +18,7 @@ class Video_Capture_Email {
   public function send_registration_email( $registration_email ) {
     wp_mail(
       'info@vidrack.com',
-      'Video Capture plugin registered at ' . $this->hostname,
+      'Video Recorder plugin registered at ' . $this->hostname,
       '
       <p>Hello,<br/>
       <br/>
