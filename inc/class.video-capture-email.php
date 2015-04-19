@@ -40,6 +40,8 @@ class Video_Capture_Email {
       You have a new video at ' . $this->hostname . '!<br/>
       <a href="http://vidrack-media.s3.amazonaws.com/' . $filename . '" download>Click here to download</a><br/>
       <br/>
+      <p>Have trouble playing videos? Download <a href="http://www.videolan.org/" target="_blank">VLC media player</a>!</p>
+      <br/>
       Kind regards,<br/>
       Vidrack Team<br/>
       <br/>

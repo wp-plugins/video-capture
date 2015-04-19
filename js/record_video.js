@@ -1,25 +1,39 @@
 jQuery(function() {
 
-  // Video upload file version
-  // Increases with each form reuse
-  var version = 1;
+  // UUID generator
+  function generateUUID() {
+    var d = Date.now();
+    var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      var r = (d + Math.random()*16)%16 | 0;
+      d = Math.floor(d/16);
+      return (c=='x' ? r : (r&0x3|0x8)).toString(16);
+    });
+    return uuid;
+  };
 
   // Detect if we're on desktop or mobile
-  if (swfobject.getFlashPlayerVersion().major != 0) {
+  if (!VideoCapture.mobile) {
     jQuery('.wp-video-capture-mobile').hide();
     jQuery('.wp-video-capture-desktop').show();
+    if (VideoCapture.window_modal) {
+      jQuery('.wp-video-capture-flash-container').addClass('wp-video-capture-flash-container-popup');
+      jQuery('a.wp-video-capture-record-button-desktop').magnificPopup({
+        type: 'inline',
+        preloader: false,
+        callbacks: {
+          beforeOpen: function() { jQuery('#wp-video-capture-flash-block').show(); },
+          afterClose: function() { jQuery('#wp-video-capture-flash-block').hide(); }
+        }
+      });
+    }
   }
 
   // Desktop "Record" button
   jQuery('.wp-video-capture-record-button-desktop').click(function(e) {
 
-    // Show SWF container
-    jQuery(this).closest('div').find('.wp-video-capture-flash-container').show();
-
     // Pass SWF Video Player params
     var flashvars = {
       ajaxurl: VideoCapture.ajaxurl,
-      timestamp: VideoCapture.timestamp,
       ip: VideoCapture.ip,
       site_name: VideoCapture.site_name,
       backLink: VideoCapture.display_branding
@@ -36,11 +50,16 @@ jQuery(function() {
       flashvars
     );
 
-    // Hide the button
-    jQuery(this).hide();
+    if (!VideoCapture.window_modal) {
+      // Show SWF container
+      jQuery(this).closest('div').find('.wp-video-capture-flash-container').show();
 
-    e.preventDefault();
-    e.stopPropagation();
+      // Hide the button
+      jQuery(this).hide();
+
+      e.preventDefault();
+      e.stopPropagation();
+    }
   });
 
   // Initialize checkbox
@@ -86,10 +105,9 @@ jQuery(function() {
 
     // Sanitize filename
     var filename =
-      VideoCapture.timestamp + '_v' +
-      version + '_' +
-      VideoCapture.site_name + '.' +
-      ext.toLowerCase();
+      VideoCapture.site_name + '_' +
+      generateUUID() +
+      '.' + ext.toLowerCase();
 
     var form_data = new FormData();
     form_data.append('filename', filename);
@@ -137,8 +155,7 @@ jQuery(function() {
             {
               'action': 'store_video_file',
               'filename': filename,
-              'timestamp': VideoCapture.timestamp,
-              'ip': VideoCapture.ip,
+              'ip': VideoCapture.ip
             }
           ).done(function(data) {
             if (data.status === 'success') {
@@ -164,8 +181,6 @@ jQuery(function() {
         d.find('.wp-video-capture-terms-and-conditions').hide();
         d.find('.wp-video-capture-upload-button').hide();
         d.find('.wp-video-capture-tnc-checkbox').iCheck('uncheck');
-        // Increase version to correctly re-use the form and not overwrite the previous video
-        version += 1;
       }
 
     });

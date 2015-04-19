@@ -4,8 +4,8 @@ Author URI: http://vidrack.com
 Plugin URI: http://vidrack.com
 Tags: camera, capture, comments, media, plugin, posts, recorder, video, webcam, page, sidebar, widget, post, admin, shortcode, user generated video, video content, video marketing, video reviews, video testimonials, video submission, video upload, YouTube, Vimeo, webcam recorder, webcam recording, video recorder, video commenting, video comments, video posts, user generated content, video plugin, video interview, vidrack
 Requires at least: 3.4
-Tested up to: 4.1
-Stable tag: 1.6.1
+Tested up to: 4.1.1
+Stable tag: 1.6.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -81,6 +81,11 @@ The plugin *doesn't* use Adobe Flash on mobile devices.
 
 == Changelog ==
 
+= 1.6.2 =
+* Improve mobile detection.
+* Player pops up in a modal window by default.
+* Small fixes and improvements.
+
 = 1.6.1 =
 * Fix jQuery-related bug.
 * Rename plugin to 'Video Capture'
@@ -138,6 +143,9 @@ The plugin *doesn't* use Adobe Flash on mobile devices.
 * First official release. Got everyone excited!
 
 == Upgrade Notice ==
+
+= 1.6.2 =
+Player pops up in a modal window by default. Some other small fixes and improvements.
 
 = 1.6.1 =
 Fix the problem with jQuery on some of the websites.

@@ -3,7 +3,7 @@
 Plugin Name: Video Recorder
 Plugin URI: http://vidrack.com
 Description: Add a video camera to your website!
-Version: 1.6.1
+Version: 1.6.2
 Author: Vidrack.com
 Author URI: http://vidrack.com
 License: GPLv2 or later
@@ -12,7 +12,7 @@ License: GPLv2 or later
 if ( !class_exists( 'WP_Video_Capture' ) ) {
 	class WP_Video_Capture {
 
-    private static $vidrack_version = '1.6.1';
+    private static $vidrack_version = '1.6.2';
 
 		public function __construct() {
 
@@ -25,6 +25,10 @@ if ( !class_exists( 'WP_Video_Capture' ) ) {
       $this->hostname = $site_url['host'];
       require_once plugin_dir_path( __FILE__ ) . 'inc/class.video-capture-email.php';
       $this->video_capture_email = new Video_Capture_Email( $this->hostname );
+
+      // Initialize Mobile Detect class
+      require_once plugin_dir_path( __FILE__ ) . 'inc/class.mobile-detect.php';
+      $this->mobile_detect = new Mobile_Detect;
 
       // Initialize JS and CSS resources
       add_action( 'wp_enqueue_scripts', array( &$this, 'register_resources' ) );
@@ -62,6 +66,7 @@ if ( !class_exists( 'WP_Video_Capture' ) ) {
 			// Add settings options
 			add_option( 'vidrack_registration_email' );
       add_option( 'vidrack_display_branding', 1 );
+      add_option( 'vidrack_window_modal', 1 );
       add_option( 'vidrack_version', self::$vidrack_version );
 
 		}
@@ -75,6 +80,7 @@ if ( !class_exists( 'WP_Video_Capture' ) ) {
 			// Remove registration_email option
 			delete_option( 'vidrack_registration_email' );
       delete_option( 'vidrack_display_branding' );
+      delete_option( 'vidrack_window_modal' );
       delete_option( 'vidrack_version ');
 
       // Remove hide notice information
@@ -89,32 +95,41 @@ if ( !class_exists( 'WP_Video_Capture' ) ) {
     }
 
     public static function update() {
-      $installed_ver = get_option( 'vidrack_version' );
+      $installed_ver = get_site_option( 'vidrack_version' );
 
-      if ( $installed_ver != self::$vidrack_version ) {
-        // Remove old options
+      // Remove old options
+      if ( version_compare($installed_ver, '1.6', '<') ) {
         delete_option( 'registration_email' );
         delete_option( 'display_branding' );
-
-        update_option( 'vidrack_version', self::$vidrack_version );
       }
+
+      // Enable modal window by default
+      if ( version_compare($installed_ver, '1.6.1', '<') ) {
+        add_option( 'vidrack_window_modal', 1 );
+      }
+
+      update_option( 'vidrack_version', self::$vidrack_version );
     }
 
     public function register_resources() {
 
       // JS
       wp_register_script( 'icheck',
-        plugin_dir_url( __FILE__ ) . 'lib/js/icheck.min.js', array( 'jquery' ), '1.0.1', true );
-      wp_register_script( 'record_video',
-        plugin_dir_url( __FILE__ ) . 'js/record_video.js', array( 'jquery' ), '1.6.1', true );
+        plugin_dir_url( __FILE__ ) . 'lib/js/icheck.min.js', array( 'jquery' ), '1.0.1' );
+      wp_register_script( 'magnific-popup',
+        plugin_dir_url( __FILE__ ) . 'lib/js/magnific-popup.min.js', array( 'jquery' ), '1.0.0' );
       wp_register_script( 'swfobject',
-        plugin_dir_url( __FILE__ ) . 'lib/js/swfobject.js', array(), '2.2', true );
+        plugin_dir_url( __FILE__ ) . 'lib/js/swfobject.js', array(), '2.2' );
+      wp_register_script( 'record_video',
+        plugin_dir_url( __FILE__ ) . 'js/record_video.js', array( 'jquery', 'icheck', 'magnific-popup', 'swfobject' ), '1.6.2' );
 
       // CSS
       wp_register_style( 'icheck-skin',
-        plugin_dir_url( __FILE__ ) . 'lib/css/icheck-flat-skin/green.css' );
+        plugin_dir_url( __FILE__ ) . 'lib/css/icheck-flat-skin/green.css', array(), '1.0.1' );
+      wp_register_style( 'magnific-popup',
+        plugin_dir_url( __FILE__ ) . 'lib/css/magnific-popup.css', array(), '1.0.0', 'screen' );
       wp_register_style( 'record_video',
-        plugin_dir_url( __FILE__ ) . 'css/record_video.css' );
+        plugin_dir_url( __FILE__ ) . 'css/record_video.css', array( 'icheck-skin', 'magnific-popup' ), '1.6.2' );
 
       // Pass variables to the frontend
 			wp_localize_script(
@@ -122,11 +137,12 @@ if ( !class_exists( 'WP_Video_Capture' ) ) {
 				'VideoCapture',
 				array(
 					'ajaxurl' => admin_url( 'admin-ajax.php' ),
-					'timestamp' => (string)number_format( round(microtime(true) * 1000), 0, '', '' ),
           'ip' => $_SERVER['REMOTE_ADDR'],
           'site_name' => $this->hostname,
 					'plugin_url' => plugin_dir_url( __FILE__ ),
-          'display_branding' => get_option( 'vidrack_display_branding' )
+          'display_branding' => get_option( 'vidrack_display_branding' ),
+          'window_modal' => get_option( 'vidrack_window_modal' ),
+          'mobile' => $this->mobile_detect->isMobile()
 				)
 			);
 
@@ -141,12 +157,8 @@ if ( !class_exists( 'WP_Video_Capture' ) ) {
 			ob_start();
 
       // Render template
-			wp_enqueue_script( 'jquery' );
-      wp_enqueue_script( 'icheck' );
-			wp_enqueue_style( 'icheck-skin' );
-			wp_enqueue_script( 'swfobject' );
-			wp_enqueue_script( 'record_video' );
 			wp_enqueue_style( 'record_video' );
+      wp_enqueue_script( 'record_video' );
 			include plugin_dir_path( __FILE__ ) . 'templates/record_video.php';
 
 			// Return buffer
@@ -164,11 +176,6 @@ if ( !class_exists( 'WP_Video_Capture' ) ) {
 
 			if ( !isset($_REQUEST['filename']) ) {
 				echo json_encode( array( 'status' => 'error', 'message' => 'Filename is not set.' ) );
-				die();
-			}
-
-			if ( !isset($_REQUEST['timestamp']) ) {
-				echo json_encode( array( 'status' => 'error', 'message' => 'Timestamp is not set.' ) );
 				die();
 			}
 

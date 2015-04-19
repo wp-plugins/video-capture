@@ -23,7 +23,7 @@ if ( !class_exists( 'WP_Video_Capture_Settings' ) ) {
 
     public function register_resources() {
       wp_register_script( 'record_video_admin_settings',
-        plugin_dir_url( __FILE__ ) . 'js/record_video_admin_settings.js', array( 'jquery' ), '1.6.1', true );
+        plugin_dir_url( __FILE__ ) . 'js/record_video_admin_settings.js', array( 'jquery' ), '1.6.2', true );
     }
 
 		public function validate_email( $email ) {
@@ -72,6 +72,7 @@ if ( !class_exists( 'WP_Video_Capture_Settings' ) ) {
 			// Register and validate options
 			register_setting( 'wp_video_capture-group', 'vidrack_registration_email', array( &$this, 'validate_email' ) );
       register_setting( 'wp_video_capture-group', 'vidrack_display_branding' );
+      register_setting( 'wp_video_capture-group', 'vidrack_window_modal' );
 
 			// Add your settings section
 			add_settings_section(
@@ -84,7 +85,7 @@ if ( !class_exists( 'WP_Video_Capture_Settings' ) ) {
 			// Add email setting
 			add_settings_field(
 				'wp_video_capture-registration_email',
-				'Notification Email',
+				'Notifications email',
 				array( &$this, 'settings_field_input_text' ),
 				'wp_video_capture',
 				'wp_video_capture-section',
@@ -96,12 +97,24 @@ if ( !class_exists( 'WP_Video_Capture_Settings' ) ) {
       // Add branding checkbox
       add_settings_field(
         'wp_video_capture-display_branding',
-        'Display Branding',
+        'Display branding',
         array( &$this, 'settings_field_input_checkbox' ),
         'wp_video_capture',
         'wp_video_capture-section',
         array(
           'field' => 'vidrack_display_branding'
+        )
+      );
+
+      // Add window format checkbox
+      add_settings_field(
+        'wp_video_capture-window_modal',
+        'Display recorder in a modal window',
+        array( &$this, 'settings_field_input_checkbox' ),
+        'wp_video_capture',
+        'wp_video_capture-section',
+        array(
+          'field' => 'vidrack_window_modal'
         )
       );
 
