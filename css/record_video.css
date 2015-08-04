@@ -7,6 +7,13 @@
   margin: 20px auto;
 }
 
+.wp-video-capture-mobile div,
+.wp-video-capture-mobile input,
+.wp-video-capture-desktop,
+.wp-video-capture-desktop div {
+  display: none;
+}
+
 .wp-video-capture-progress-container {
   padding: 20px 0 20px 0;
 }
@@ -17,38 +24,24 @@
 
 .wp-video-capture-progress {
   border: 1px solid black;
-  width: 200px;
+  background: #aaaaaa;
+  width: 100%;
+  height: 40px;
 }
 
-.wp-video-capture-terms-and-conditions {
-  margin-top: 20px;
-}
-
-.wp-video-capture-tnc-link {
-  font-size: 20px;
-  text-decoration: none;
-  margin-left: 5px;
-}
-
-.icheckbox_flat-green {
-  margin-bottom: 3px;
+.wp-video-capture-progress-text {
+  color: #ffffff;
+  text-align: center;
+  margin-top: -33px;
+  font-size: 22pt;
 }
 
 .wp-video-capture-record-button-desktop,
 .wp-video-capture-record-button-mobile {
-  background-image: url('../images/button_record.jpg');
+  background-image: url('../images/button_record.png');
   display: inline-block;
-  width: 165px;
-  height: 56px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-.wp-video-capture-upload-button {
-  background-image: url('../images/button_upload.png');
-  display: inline-block;
-  width: 156px;
-  height: 50px;
+  width: 203px;
+  height: 46px;
   margin-top: 20px;
   margin-bottom: 20px;
 }

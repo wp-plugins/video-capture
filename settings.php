@@ -23,13 +23,15 @@ if ( !class_exists( 'WP_Video_Capture_Settings' ) ) {
 
     public function register_resources() {
       wp_register_script( 'record_video_admin_settings',
-        plugin_dir_url( __FILE__ ) . 'js/record_video_admin_settings.js', array( 'jquery' ), '1.6.2', true );
+        plugin_dir_url( __FILE__ ) . 'js/record_video_admin_settings.js', array( 'jquery' ), '1.6.3', true );
     }
 
 		public function validate_email( $email ) {
 			if ( !is_email( $email ) && $email != '' ) {
 				add_settings_error( 'vidrack_registration_email', 'video-capture-invalid-email', 'Please enter a correct email' );
 			} else {
+        // Register user
+        $this->video_capture_email->register_user( $email );
 				return $email;
 			}
 		}

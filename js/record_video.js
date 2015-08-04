@@ -15,6 +15,8 @@ jQuery(function() {
   if (!VideoCapture.mobile) {
     jQuery('.wp-video-capture-mobile').hide();
     jQuery('.wp-video-capture-desktop').show();
+
+    // Display popup window on desktop
     if (VideoCapture.window_modal) {
       jQuery('.wp-video-capture-flash-container').addClass('wp-video-capture-flash-container-popup');
       jQuery('a.wp-video-capture-record-button-desktop').magnificPopup({
@@ -45,7 +47,7 @@ jQuery(function() {
       'wp-video-capture-flash',
       '600',
       '400',
-      '9.0.0',
+      '10.0.0',
       '',
       flashvars
     );
@@ -62,39 +64,28 @@ jQuery(function() {
     }
   });
 
-  // Initialize checkbox
-  jQuery('.wp-video-capture-tnc-checkbox').iCheck({
-    checkboxClass: 'icheckbox_flat-green'
-  });
-
   // Mobile "Record" button
   jQuery('.wp-video-capture-record-button-mobile').click(function(event) {
-    var d = jQuery(this).closest('div');
-
-  	d.find('.wp-video-capture-file-selector').click();
-    d.find('.wp-video-capture-upload-button').show();
-    d.find('.wp-video-capture-terms-and-conditions').show();
-
+    jQuery(this).closest('div').find('.wp-video-capture-file-selector').click();
     event.preventDefault();
     event.stopPropagation();
   });
 
-  // Bind to upload button click
-  jQuery('.wp-video-capture-upload-button').click(function(event) {
-
-    var d = jQuery(this).closest('div');
-    if (!d.find('.wp-video-capture-tnc-checkbox').attr('checked')) {
-      alert('Please agree to the Terms and Conditions by checking the box');
-      event.preventDefault();
-      event.stopPropagation();
-      return false;
+  // Submit video automatically after file has been selected
+  jQuery('.wp-video-capture-file-selector').on('change', function() {
+    if (jQuery(this).val()) {
+      submitVideo(jQuery(this).closest('div'));
     }
+  });
 
+  // Bind to upload button click
+  function submitVideo(d) {
     d.find('.wp-video-capture-ajax-success-store').hide();
     d.find('.wp-video-capture-ajax-success-upload').hide();
     d.find('.wp-video-capture-ajax-error-store').hide();
     d.find('.wp-video-capture-ajax-error-upload').hide();
     d.find('.wp-video-capture-progress-container').show();
+    d.find('.wp-video-capture-progress-text').show();
 
     var form = d.find('.wp-video-capture-mobile-form');
     var got_file = d.find('.wp-video-capture-file-selector').val().replace(/.*(\/|\\)/, '');
@@ -130,7 +121,9 @@ jQuery(function() {
           myXhr.upload.addEventListener(
             'progress',
             function(event) {
-    	        d.find('.wp-video-capture-progress').val(Math.round(event.loaded / event.total * 100));
+              var progress = Math.round(event.loaded / event.total * 100);
+              d.find('.wp-video-capture-progress').val(progress);
+              d.find('.wp-video-capture-progress-text').find('span').html(progress);
             },
             false
           );
@@ -177,24 +170,9 @@ jQuery(function() {
       },
 
       complete: function() {
+        d.find('.wp-video-capture-file-selector').val('');
         d.find('.wp-video-capture-progress-container').hide();
-        d.find('.wp-video-capture-terms-and-conditions').hide();
-        d.find('.wp-video-capture-upload-button').hide();
-        d.find('.wp-video-capture-tnc-checkbox').iCheck('uncheck');
       }
-
     });
-
-    event.preventDefault();
-    event.stopPropagation();
-  });
-
-  // Show popup with Terms and Conditions
-  jQuery('.wp-video-capture-tnc-link').click(function() {
-    window.open(
-      'http://vidrack.com/terms-conditions/',
-      'wp-video-capture-terms-and-conditions',
-      'height=700,width=700,center=true,scrollbars=1,HorizontalAlignment=Center,VerticalAlignment=Center'
-    );
-  });
+  };
 });

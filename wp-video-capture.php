@@ -3,7 +3,7 @@
 Plugin Name: Video Recorder
 Plugin URI: http://vidrack.com
 Description: Add a video camera to your website!
-Version: 1.6.2
+Version: 1.6.3
 Author: Vidrack.com
 Author URI: http://vidrack.com
 License: GPLv2 or later
@@ -12,7 +12,7 @@ License: GPLv2 or later
 if ( !class_exists( 'WP_Video_Capture' ) ) {
 	class WP_Video_Capture {
 
-    private static $vidrack_version = '1.6.2';
+    private static $vidrack_version = '1.6.3';
 
 		public function __construct() {
 
@@ -114,22 +114,18 @@ if ( !class_exists( 'WP_Video_Capture' ) ) {
     public function register_resources() {
 
       // JS
-      wp_register_script( 'icheck',
-        plugin_dir_url( __FILE__ ) . 'lib/js/icheck.min.js', array( 'jquery' ), '1.0.1' );
       wp_register_script( 'magnific-popup',
         plugin_dir_url( __FILE__ ) . 'lib/js/magnific-popup.min.js', array( 'jquery' ), '1.0.0' );
       wp_register_script( 'swfobject',
         plugin_dir_url( __FILE__ ) . 'lib/js/swfobject.js', array(), '2.2' );
       wp_register_script( 'record_video',
-        plugin_dir_url( __FILE__ ) . 'js/record_video.js', array( 'jquery', 'icheck', 'magnific-popup', 'swfobject' ), '1.6.2' );
+        plugin_dir_url( __FILE__ ) . 'js/record_video.js', array( 'jquery', 'magnific-popup', 'swfobject' ), '1.6.3' );
 
       // CSS
-      wp_register_style( 'icheck-skin',
-        plugin_dir_url( __FILE__ ) . 'lib/css/icheck-flat-skin/green.css', array(), '1.0.1' );
       wp_register_style( 'magnific-popup',
         plugin_dir_url( __FILE__ ) . 'lib/css/magnific-popup.css', array(), '1.0.0', 'screen' );
       wp_register_style( 'record_video',
-        plugin_dir_url( __FILE__ ) . 'css/record_video.css', array( 'icheck-skin', 'magnific-popup' ), '1.6.2' );
+        plugin_dir_url( __FILE__ ) . 'css/record_video.css', array( 'magnific-popup' ), '1.6.3' );
 
       // Pass variables to the frontend
 			wp_localize_script(

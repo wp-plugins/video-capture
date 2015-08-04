@@ -2,26 +2,25 @@
 Contributors: vincent-stark
 Author URI: http://vidrack.com
 Plugin URI: http://vidrack.com
-Tags: camera, capture, comments, media, plugin, posts, recorder, video, webcam, page, sidebar, widget, post, admin, shortcode, user generated video, video content, video marketing, video reviews, video testimonials, video submission, video upload, YouTube, Vimeo, webcam recorder, webcam recording, video recorder, video commenting, video comments, video posts, user generated content, video plugin, video interview, vidrack
+Tags: video recorder, video testimonials, video interviews, video testimonial plugin, video interview plugin, user generated video, crowdsourced video, crowdsourced video plugin, crowdsourced video, user generated content, user generated content plugin, video submission, video submission plugin, video posts, video comments, webcam recorder, webcam, video submission, video upload, video widget, recorder, video recording, youtube, video reviews, admin, comments, page, video posts
 Requires at least: 3.4
-Tested up to: 4.1.1
-Stable tag: 1.6.2
+Tested up to: 4.2.3
+Stable tag: 1.6.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-A Video Camera on Your Website. Webcam Recorder by Vidrack. Easily gather user generated video content from your website visitors.
+[Vidrack.com](http://vidrack.com) is a browser-based video recorder that you can place on your website.  Visitors to your website can use this video recorder to activate their webcam, or mobile camera, and record videos easily on any website. Videos are stored privately in your admin panel. This is the easiest way to collect crowdsourced videos.
+
+For enterprise or customization of our product please go to [Vidrack Enterprise](http://vidrack.com/enterprise)
 
 == Description ==
 
-* [Video Recorder](http://vidrack.com) is a 'record video' button you can place anywhere on your website.
-* It's just a button that activates your website visitors webcam or mobile camera.
-* You can customize text around the button asking for specific types of videos.
-* These could be video reviews, testimonials, opinions, auditions, news and interviews.
-* Businesses and website owners can also offer incentives for people to record and submit video through your website.
-* Videos captured from your website will be stored privately.
-* You choose which videos to share, download or delete from the admin panel.
+* A website visitor can activate their webcam or mobile camera and submit videos through any website.
+* User generated videos are collected privately and can be accessed in your Wordpress Admin Panel.
+* Our software lets you download the original video files submitted through your website.
+* You choose which videos to share, download or delete, from your admin panel.
 
-For more information, please check out [User Guide](http://vidrack.com/wordpress-guide/) or [contact us](http://vidrack.com/contact/).
+For more information, please check out the [User Guide](http://vidrack.com/wordpress-guide/) or [contact us](http://vidrack.com/contact/).
 
 = How to use =
 
@@ -80,6 +79,13 @@ The plugin *doesn't* use Adobe Flash on mobile devices.
 4. Settings
 
 == Changelog ==
+
+= 1.6.3 =
+* Improve record button appearance.
+* Remove T&C link.
+* Improve compatibility with the latest WP.
+* Improve mobile flow.
+* Improve progress bar.
 
 = 1.6.2 =
 * Improve mobile detection.
@@ -143,6 +149,9 @@ The plugin *doesn't* use Adobe Flash on mobile devices.
 * First official release. Got everyone excited!
 
 == Upgrade Notice ==
+
+= 1.6.3 =
+Improved Record button appearance.
 
 = 1.6.2 =
 Player pops up in a modal window by default. Some other small fixes and improvements.

@@ -15,19 +15,23 @@ class Video_Capture_Email {
 
   }
 
-  public function send_registration_email( $registration_email ) {
-    wp_mail(
-      'info@vidrack.com',
-      'Video Recorder plugin registered at ' . $this->hostname,
-      '
-      <p>Hello,<br/>
-      <br/>
-      We have a new registration at <strong>' . $this->hostname . '</strong>!<br/>
-      Registration email is <strong>' . $registration_email . '</strong><br/>
-      ',
-      $this->headers
+  public function register_user( $registration_email ) {
+    $sendy_url = 'http://newsletter.vidrack.net/subscribe';
+    $sendy_list_id = 'ze38TC4UFzcvn59eBaV1Xg';
+    $sendy_data = array(
+      'email' => $registration_email,
+      'list'  => $sendy_list_id
     );
 
+    $options = array(
+      'http' => array(
+        'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+        'method'  => 'POST',
+        'content' => http_build_query($sendy_data)
+      )
+    );
+    $context  = stream_context_create($options);
+    $result = file_get_contents($sendy_url, false, $context);
   }
 
   public function send_new_video_email( $to, $filename ) {
