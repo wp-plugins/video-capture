@@ -9,16 +9,17 @@ Stable tag: 1.6.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-[Vidrack.com](http://vidrack.com) is a browser-based video recorder that you can place on your website.  Visitors to your website can use this video recorder to activate their webcam, or mobile camera, and record videos easily on any website. Videos are stored privately in your admin panel. This is the easiest way to collect crowdsourced videos.
-
-For enterprise or customization of our product please go to [Vidrack Enterprise](http://vidrack.com/enterprise)
+Vidrack.com is a browser-based video recorder that you can place on your website.
 
 == Description ==
+Visitors to your website can use this video recorder to activate their webcam, or mobile camera, and record videos easily on any website. Videos are stored privately in your admin panel. This is the easiest way to collect crowdsourced videos.
 
 * A website visitor can activate their webcam or mobile camera and submit videos through any website.
 * User generated videos are collected privately and can be accessed in your Wordpress Admin Panel.
 * Our software lets you download the original video files submitted through your website.
 * You choose which videos to share, download or delete, from your admin panel.
+
+For enterprise or customization of our product please go to [Vidrack Enterprise](http://vidrack.com/enterprise)
 
 For more information, please check out the [User Guide](http://vidrack.com/wordpress-guide/) or [contact us](http://vidrack.com/contact/).
 
